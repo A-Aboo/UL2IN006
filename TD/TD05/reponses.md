@@ -6,6 +6,12 @@
 
 La racine contient donc toujours le minimum. Operations : inserer, supprimer le minimum, lire le minimum.
 
+![Un tas et ses cles](img/s2.png)
+
+L'arbre etant complet, on le range dans un simple tableau, la case 0 servant a stocker le nombre d'elements :
+
+![Le meme tas range dans un tableau](img/s3.png)
+
 **1.2** Insertions successives de 10, 2, 5, 4, 7, 15, 1, 3 (a chaque fois on place l'element en derniere position puis on le fait remonter par des `swap(pere, fils)`) :
 
 ```
@@ -18,6 +24,8 @@ La racine contient donc toujours le minimum. Operations : inserer, supprimer le 
 2 4 5 10 7 15 1 -> swap(3,7) -> 2 4 1 10 7 15 5 -> swap(1,3) -> 1 4 2 10 7 15 5
 1 4 2 10 7 15 5 3 -> swap(4,8) -> swap(2,4) -> 1 3 2 4 7 15 5 10
 ```
+
+![Construction du tas etape par etape](img/s5.png)
 
 Tas obtenu :
 
@@ -54,6 +62,8 @@ Suppression du minimum : O(h) = O(log2(n)) aussi (l'element redescend jusqu'a un
 ## Exercice 2
 
 **2.1** Tas ternaire construit a partir de 3, 6, 1, 13, 17, 18, 2 : `1 2 3 13 17 18 6`
+
+![Construction du tas ternaire etape par etape](img/s6.png)
 
 ```
            1
