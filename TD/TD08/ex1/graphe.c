@@ -240,21 +240,9 @@ void desalloue_graphe(GrapheSimple *G)
 
 int main(void)
 {
-    GrapheSimple G1, G2, G3, G4;
-
-    cree_graphe(&G1, 6);
-    ajoute_lien(&G1, 0, 1);
-    ajoute_lien(&G1, 0, 4);
-    ajoute_lien(&G1, 1, 2);
-    ajoute_lien(&G1, 1, 3);
-    ajoute_lien(&G1, 1, 5);
-
-    cree_graphe(&G2, 6);
-    ajoute_arete(&G2, 0, 1);
-    ajoute_arete(&G2, 0, 4);
-    ajoute_arete(&G2, 1, 2);
-    ajoute_arete(&G2, 1, 3);
-    ajoute_arete(&G2, 1, 5);
+    GrapheSimple G3;
+    int visit[6] = {0};
+    int pred[6], k, l;
 
     cree_graphe(&G3, 6);
     ajoute_lien(&G3, 0, 1);
@@ -267,47 +255,15 @@ int main(void)
     ajoute_lien(&G3, 5, 3);
     ajoute_lien(&G3, 2, 3);
 
-    cree_graphe(&G4, 6);
-    ajoute_arete(&G4, 0, 1);
-    ajoute_arete(&G4, 0, 4);
-    ajoute_arete(&G4, 1, 2);
-    ajoute_arete(&G4, 1, 3);
-    ajoute_arete(&G4, 1, 5);
-    ajoute_arete(&G4, 3, 4);
-    ajoute_arete(&G4, 4, 5);
-    ajoute_arete(&G4, 5, 3);
-    ajoute_arete(&G4, 2, 3);
-
-    aff_graphe(&G1);
-    aff_graphe(&G2);
     aff_graphe(&G3);
-    aff_graphe(&G4);
 
-    printf("\nQ1.3 parcours_1 sur G1 : ");
-    aff_parcours_1(&G1, 0);
+    aff_parcours_3(&G3, 0, visit);
     printf("\n");
 
-    printf("\nQ1.6 parcours_3 sur G4 : ");
-    int visit[6] = {0};
-    aff_parcours_3(&G4, 0, visit);
-    printf("\n");
-
-    printf("\nQ1.8 circuit dans G1 : %d\n", existe_circuit(&G1));
-    printf("Q1.8 circuit dans G3 : %d\n", existe_circuit(&G3));
-
-    int pred[6], k, l;
-    printf("\nQ1.10 ");
     if (circuit_pred(&G3, pred, &k, &l))
         aff_circuit(pred, k, l);
 
-    printf("\nQ1.11 circuit sur G2 : %d\n", existe_circuit(&G2));
-    printf("Q1.11 cycle sur G2 : %d\n", cycle_non_oriente(&G2));
-    printf("Q1.11 cycle sur G4 : %d\n", cycle_non_oriente(&G4));
-
-    desalloue_graphe(&G1);
-    desalloue_graphe(&G2);
     desalloue_graphe(&G3);
-    desalloue_graphe(&G4);
 
     return 0;
 }

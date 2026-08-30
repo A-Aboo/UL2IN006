@@ -199,17 +199,8 @@ int main(void)
 
     afficheGraphe(&G);
 
-    int marquage[8];
-    liste_descendants(&G, 1, marquage);
-    printf("\nQ2.3 descendants de 1 : ");
-    for (int i = 0; i < 8; i++)
-        if (marquage[i])
-            printf("%d ", i);
-    printf("\n");
-
     int CFC[8];
     composantes_fortement_connexes(&G, CFC);
-    printf("\nQ2.4 composantes fortement connexes :\n");
     for (int i = 0; i < 8; i++)
         printf("sommet %d : CFC%d\n", i, CFC[i]);
 
